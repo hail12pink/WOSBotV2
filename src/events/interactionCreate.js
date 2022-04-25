@@ -1,5 +1,4 @@
 const { Collection } = require("discord.js")
-const { cooldown } = require("../commands/test")
 
 module.exports = async (client, interaction) => {
     if (interaction.isCommand() || interaction.isContextMenu()) {
