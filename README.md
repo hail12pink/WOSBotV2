@@ -1,2 +1,2 @@
 # WOSBotV2
-wosbot but good
+wosbot but actually good

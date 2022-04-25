@@ -1,0 +1,19 @@
+{
+  "name": "wosbotv2",
+  "version": "1.0.0",
+  "description": "wosbot but good",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hail12pink/WOSBotV2.git"
+  },
+  "author": "hail12pink",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hail12pink/WOSBotV2/issues"
+  },
+  "homepage": "https://github.com/hail12pink/WOSBotV2#readme"
+}
