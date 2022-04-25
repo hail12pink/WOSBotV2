@@ -1,3 +1,5 @@
+// rename this to "config.json"
+
 {
         "id": "bot_userid_here",
         "token": "your_token_here"
