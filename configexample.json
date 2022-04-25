@@ -1,6 +1,6 @@
-// rename this to "config.json"
-
 {
         "id": "bot_userid_here",
-        "token": "your_token_here"
+        "token": "your_bot_token_here",
+        
+        "instructions": "change the above values and rename this file to 'config.json'"
 }
