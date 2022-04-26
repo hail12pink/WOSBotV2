@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/hail12pink/WOSBotV2/issues"
   },
-  "homepage": "https://github.com/hail12pink/WOSBotV2#readme"
+  "homepage": "https://github.com/hail12pink/WOSBotV2#readme",
+  "dependencies": {
+    "@discordjs/rest": "^0.4.1",
+    "discord-api-types": "^0.32.0",
+    "discord.js": "^13.6.0",
+    "node-fetch": "^2.6.7"
+  }
 }

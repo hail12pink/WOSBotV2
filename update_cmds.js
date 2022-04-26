@@ -10,7 +10,7 @@ readdirSync("./src/commands").map(async (cmd) => {
     console.log(`commands/${cmd}`)
 })
 
-const rest = new REST({ version: "9" }).setToken(config.token)
+const rest = new REST({ version: "9" }).setToken(config.token);
 
 (async () => {
     try {
