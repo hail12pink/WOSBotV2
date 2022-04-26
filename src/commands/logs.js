@@ -3,9 +3,10 @@ const { MessageActionRow, MessageButton, MessageEmbed, MessageSelectMenu } = req
 
 module.exports = {
     name: "logs",
-    description: "checks base logs",
+    description: "checks base logs. only works for among us empire members",
     cooldown: 1,
     permissions: [],
+    roles: ["967122553921503283"],
     options: [
         {
             name: "start",
@@ -15,38 +16,54 @@ module.exports = {
         }
     ],
     run: async (client, interaction) => {
+        if (!(interaction.channel.id == "968542334381875310")) return interaction.reply("This command can only be used in <#968542334381875310>")
+        console.log(interaction.channel.id)
+
+        await interaction.deferReply()
+
+        const reply = await interaction.fetchReply()
+
         const user = interaction.user
 
         let filter = null
         let cur = (interaction.options.getInteger("start") || 1) - 1
 
-        const ifilter = m => m.customId == "back" || "forward" || "filter" && m.user.id === user.id && m.message.interaction.id === interaction.id
+        const ifilter = m => m.customId == "back" || "forward" || "filter" && m.user.id === user.id && m.message.id === reply.id
         const collector = interaction.channel.createMessageComponentCollector({ ifilter, time: 15000 });
-        await interaction.deferReply()
 
         async function update() {
             let logAmnt = 0
             let embeds = []
 
-            for (const [i, log] of Object.entries(client.logs)) {
-                if (logAmnt < 3 && i >= cur && ((log.event == filter) || !filter)) {
-                    console.log(`at #${Number(i) + 1}`)
-                    embed = new MessageEmbed()
-                        .setColor("RED")
-                        .setTitle(`Log ${Number(i) + 1}/${client.logs.length}`)
-                        .addFields(
-                            { name: "event type", value: log.event, inline: true },
-                            { name: "time", value: `<t:${Math.floor(log.timestamp / 1000)}>`, inline: true }
-                        )
+            if (client.logs.length > 1) {
+                for (const [i, log] of Object.entries(client.logs)) {
+                    if (logAmnt < 3 && i >= cur - 1 && ((log.event == filter) || !filter)) {
+                        console.log(`at #${Number(i) + 1}`)
+                        embed = new MessageEmbed()
+                            .setColor("RED")
+                            .setTitle(`Log ${Number(i) + 1}/${client.logs.length}`)
+                            .addFields(
+                                { name: "event type", value: log.event, inline: true },
+                                { name: "location", value: log.location, inline: true },
+                                { name: "time", value: `<t:${Math.floor(log.timestamp / 1000)}>`, inline: true }
+                            )
 
-                    if (log.event == "base_enter") {
-                        embed.addField("user", log.info.user, true)
+                        if (log.event == "base_enter") {
+                            embed.addField("user", log.user, true)
+                        }
+
+                        logAmnt += 1
+
+                        embeds.push(embed)
                     }
-
-                    logAmnt += 1
-
-                    embeds.push(embed)
                 }
+            } else {
+                embed = new MessageEmbed()
+                    .setColor("RED")
+                    .setTitle("No logs")
+                    .setDescription("There are currently no logs.")
+
+                embeds.push(embed)
             }
 
             const row = new MessageActionRow()
@@ -60,7 +77,7 @@ module.exports = {
                         .setCustomId("forward")
                         .setLabel("Forward")
                         .setStyle("PRIMARY")
-                        .setDisabled(cur + 1 > client.logs.length),
+                        .setDisabled(cur + 1 >= client.logs.length),
                 )
             const selectMenu = new MessageActionRow()
                 .addComponents(
@@ -81,32 +98,36 @@ module.exports = {
                         ])
                 )
 
-            return interaction.editReply({ embeds: embeds, components: [row, selectMenu] })
+            return interaction.editReply({ embeds: embeds, components: [selectMenu, row] })
         }
 
         collector.on("collect", async i => {
-            await i.deferUpdate()
+            try {
+                await i.deferUpdate()
 
-            if (i.customId === "forward") {
-                console.log("forward")
+                if (i.customId === "forward") {
+                    console.log("forward")
 
-                cur = Math.min(cur + 3, client.logs.length)
-            } else if (i.customId === "backward") {
-                console.log("backward")
+                    cur = Math.min(cur + 3, client.logs.length)
+                } else if (i.customId === "backward") {
+                    console.log("backward")
 
-                cur = Math.max(cur - 3, client.logs.length)
-            } else if (i.customId === "filter") {
-                const value = i.values[0]
-                console.log(value)
+                    cur = Math.max(cur - 3, 0)
+                } else if (i.customId === "filter") {
+                    const value = i.values[0]
+                    console.log(value)
 
-                if (value === "no_filter") {
-                    filter = null
-                } else {
-                    filter = value
+                    if (value === "no_filter") {
+                        filter = null
+                    } else {
+                        filter = value
+                    }
                 }
-            }
 
-            update()
+                update()
+            } catch (error) {
+                console.log(error)
+            }
         })
 
         update()
