@@ -17,10 +17,10 @@ const rest = new REST({ version: "9" }).setToken(config.token);
         console.log("[Discord API] Started refreshing application (/) commands.")
         await rest.put(
             // guild
-            Routes.applicationGuildCommands(config.id, "661575869118283787"),
+            //Routes.applicationGuildCommands(config.id, "661575869118283787"),
 
             // global
-            //Routes.applicationCommands(config.id),
+            Routes.applicationCommands(config.id),
             
             
             { body: commands }
