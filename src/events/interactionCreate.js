@@ -28,6 +28,13 @@ module.exports = async (client, interaction) => {
                     return interaction.reply({ content: `you're missing permissions [${command.permissions.map(p => `\`${p}\``).join(", ") }]`, ephemeral: true })
                 }
             }
+            if (command.roles) {
+                for (const roleid of command.roles) {
+                    if (!interaction.member.roles.cache.has(roleid)) {
+                        return interaction.reply({ content: `you need the <@&${roleid}> role to use this command`, allowedMentions: { parse: [] }})
+                    }
+                }
+            }
 
             command.run(client, interaction)
         } catch (error) {
