@@ -6,12 +6,19 @@ module.exports = {
     description: "checks base logs",
     cooldown: 1,
     permissions: [],
-    options: [],
+    options: [
+        {
+            name: "start",
+            description: "the place to start the search",
+            type: 4,
+            required: false
+        }
+    ],
     run: async (client, interaction) => {
         const user = interaction.user
 
         let filter = null
-        let cur = 0
+        let cur = (interaction.options.getInteger("start") || 1) - 1
 
         const ifilter = m => m.customId == "back" || "forward" || "filter" && m.user.id === user.id && m.message.interaction.id === interaction.id
         const collector = interaction.channel.createMessageComponentCollector({ ifilter, time: 15000 });
@@ -74,7 +81,7 @@ module.exports = {
                         ])
                 )
 
-            return interaction.editReply({ content: "edited " + Date.now(), embeds: embeds, components: [row, selectMenu] })
+            return interaction.editReply({ embeds: embeds, components: [row, selectMenu] })
         }
 
         collector.on("collect", async i => {
