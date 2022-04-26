@@ -17,16 +17,16 @@ module.exports = {
     permissions: [],
     options: [
         {
-            "name": "part",
-            "description": "The part's name.",
-            "type": 3,
-            "required": true
+            name: "part",
+            description: "The part's name.",
+            type: 3,
+            required: true
         },
         {
-            "name": "raw_json",
-            "description": "whether to send json instead",
-            "type": 5,
-            "required": false
+            name: "raw_json",
+            description: "whether to send json instead",
+            type: 5,
+            required: false
         }
     ],
 
