@@ -7,5 +7,6 @@ module.exports = {
 
     run: async(client, interaction) => {
         // code here
+        interaction.reply("not implemented")
     }
 }
