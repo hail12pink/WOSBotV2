@@ -6,8 +6,8 @@ module.exports = async (client, guildMember) => {
     //console.log(guildMember)
     //console.log(guild.channels.cache)
 
-    if (guild == "661575869118283787") {
-        const channel = guild.channels.cache.get("752562855051657286")
+    if (guild == "967114437356056698") {
+        const channel = guild.channels.cache.get("967117324454871140")
 
         min = 0
         max = welcomeMessages.length
