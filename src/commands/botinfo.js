@@ -9,13 +9,14 @@ module.exports = {
     options: [],
 
     run: async(client, interaction) => {
-
+        const uptime = client.readyTime //Date.now() - client.readyTime
+        console.log(uptime)
         
         const embed = new MessageEmbed()
 
             .addFields(
                 { name: "Operating System", value: `${os.type()} ${os.arch()}`, inline: true },
-                { name: "Uptime", value: `<t:${}>` }
+                { name: "Uptime", value: `Since <t:${Math.floor(uptime/1000)}:R>` }
             )
 
         interaction.reply({ embeds: [embed] })
