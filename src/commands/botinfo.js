@@ -26,7 +26,7 @@ module.exports = {
             .addFields(
                 { name: "Operating System", value: `${os.type()} (${os.arch()})`, inline: true },
                 { name: "Uptime", value: `Since <t:${Math.floor(uptime/1000)}:R>` },
-                { name: "Memory Usage", value: `${usedmem*10}/${totalmem*10}MB (${Math.round((usedmem/totalmem)*100)/100}%)`, inline: true }
+                { name: "Memory Usage", value: `${usedmem*10}MB/${totalmem*10}MB (${Math.round((usedmem/totalmem)*100)/100}%)`, inline: true }
             )
 
         interaction.reply({ embeds: [embed] })
