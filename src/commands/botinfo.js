@@ -15,7 +15,7 @@ module.exports = {
         const embed = new MessageEmbed()
 
             .addFields(
-                { name: "Operating System", value: `${os.type()} ${os.arch()}`, inline: true },
+                { name: "Operating System", value: `${os.type()} (${os.arch()})`, inline: true },
                 { name: "Uptime", value: `Since <t:${Math.floor(uptime/1000)}:R>` }
             )
 
