@@ -57,7 +57,7 @@ module.exports = {
                 { name: "State", value: (part.ClassState || 3).toString(), inline: true },
             )
 
-            if (part.Flammable) {
+            if (part.Flammable == true) {
                 embed.addField("Flammable", ":white_check_mark:", true)
             } else {
                 embed.addField("Flammable", ":x:", true)
