@@ -37,7 +37,11 @@ module.exports = {
         const parts = await (await fetch("http://12pink.dev/data/parts.json")).json()
         const partName = interaction.options.getString("part")
         const user = interaction.user
-        const part = parts[partName]
+        let part = null
+
+        for (const [partN, partI] of Object.entries(parts)) {
+            if (partName.toLowerCase() == partN.toLowerCase()) { part = partI; break }
+        }
 
         if (part && part.Recipe) {
             const rawRecipe = await searchUntilRaw(part, parts)
