@@ -16,7 +16,7 @@ module.exports = {
         console.log(os.totalmem())
 
         const totalmem = Math.round((os.totalmem()/1000/1000*100)/1000)
-        const usedmem = Math.round((process.memoryUsage().heapUsed/1000/1000*100)/1000)
+        const usedmem = Math.round((process.memoryUsage().heapTotal/1000/1000*100)/1000)
 
         console.log(usedmem)
         console.log(process.memoryUsage())
