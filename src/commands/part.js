@@ -37,7 +37,7 @@ module.exports = {
         let part = null
 
         for (const [partN, partI] of Object.entries(parts)) {
-            if (partName.toLowerCase() == partN.toLowerCase()) { part = partI; break }
+            if (partName.toLowerCase() == partN.toLowerCase()) { part = partI; partName = partN; break }
         }
 
         if (part) {
