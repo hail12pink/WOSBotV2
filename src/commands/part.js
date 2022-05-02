@@ -76,7 +76,7 @@ module.exports = {
                 embed.addField("Recipe", "No crafting recipe.", true)
             }
 
-            if (part.Malleabiltity && part.Malleability > 0) {
+            if (part.Malleability && part.Malleability > 0) {
                 embed.addField("Malleability", part.Malleability.toString(), true)
             } else {
                 const size = part.DefaultSize
