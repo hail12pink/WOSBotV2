@@ -4,11 +4,25 @@ const { readdirSync } = require("fs")
 const path = require("path")
 const config = require("./config.json")
 
-const commands = []
+const guilds = {}
+const globalCommands = []
+
 readdirSync("./src/commands").map(async (cmd) => {
-    commands.push(require(`./src/commands/${cmd}`))
+	const cmdata = require(`./src/commands/${cmd}`)	
+	
+	if (cmdata.guilds && cmdata.guilds.length > 0) {
+		for (const id of cmdata.guilds) {
+			guilds[id] = guilds[id] || []
+
+			guilds[id].push(cmdata)
+		}
+	} else {
+    	globalCommands.push(cmdata)
+	}
     console.log(`commands/${cmd}`)
 })
+
+console.log(guilds)
 
 const rest = new REST({ version: "9" }).setToken(config.token);
 
@@ -23,10 +37,19 @@ const rest = new REST({ version: "9" }).setToken(config.token);
             Routes.applicationCommands(config.id),
             
             
-            { body: commands }
+            { body: globalCommands }
         )
 
-        commands.map(async (cmd) => {
+		for (const [guildID, guildCommands] of Object.entries(guilds)) {
+			await rest.put(
+				Routes.applicationGuildCommands(config.id, guildID),
+				{ body: guildCommands }
+			)
+
+			console.log(guildID)
+		}
+
+        globalCommands.map(async (cmd) => {
             console.log(cmd)
         })
     } catch (error) {

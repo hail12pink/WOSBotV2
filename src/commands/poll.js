@@ -2,6 +2,7 @@ module.exports = {
     name: "poll",
     description: "Create a poll",
     cooldown: 1,
+	guilds: [],
     permissions: [],
     options: [],
 

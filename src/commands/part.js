@@ -14,6 +14,7 @@ module.exports = {
     name: "part",
     description: "gets information about a waste of space part",
     cooldown: 1,
+	guilds: [],
     permissions: [],
     options: [
         {

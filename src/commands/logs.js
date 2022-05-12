@@ -5,6 +5,7 @@ module.exports = {
     name: "logs",
     description: "checks base logs. only works for among us empire members",
     cooldown: 1,
+	guilds: ["967114437356056698"],
     permissions: [],
     roles: ["967122553921503283"],
     options: [

@@ -24,6 +24,7 @@ module.exports = {
     name: "raw",
     description: "gets the raw crafting recipe for a part",
     cooldown: 1,
+	guilds: [],
     permissions: [],
     options: [
         {

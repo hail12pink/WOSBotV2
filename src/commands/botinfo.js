@@ -6,6 +6,7 @@ module.exports = {
     name: "botinfo",
     description: "gets information about the bot",
     cooldown: 1,
+	guilds: [],
     permissions: [],
     options: [],
 
