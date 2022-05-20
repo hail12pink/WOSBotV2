@@ -15,6 +15,7 @@ const client = new Client({
     intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MEMBERS]
 })
 
+// add a bunch of stuff to the client thing
 client.commands = new Collection()
 client.config = require("./config.json")
 client.serials = require("./serials.json")
