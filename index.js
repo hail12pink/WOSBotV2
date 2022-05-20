@@ -9,6 +9,8 @@ const fetch = require("node-fetch")
 const { Client, Collection, Intents } = require("discord.js")
 const { readdirSync, writeFileSync, readFileSync } = require("fs")
 const logs = require("./src/commands/logs")
+
+// make a client thing that we can add stuff to
 const client = new Client({
     allowedMentions: { parse: ['users', 'roles'] },
     fetchAllMembers: false,
