@@ -32,9 +32,9 @@ module.exports = {
     ],
 
     run: async (client, interaction) => {
+		const user = interaction.user
         const parts = await (await fetch("http://12pink.dev/data/parts.json")).json()
-        const partName = interaction.options.getString("part")
-        const user = interaction.user
+        let partName = interaction.options.getString("part")
         let part = null
 
         for (const [partN, partI] of Object.entries(parts)) {
