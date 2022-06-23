@@ -32,8 +32,11 @@ readdirSync("./src/utils/handlers/").map(async (handler) => {
     console.log(`loaded handler '${handler}'`)
 })
 
-app.listen(port, () => {
-    console.log(`server listening at localhost:${port}`)
-})
+// the wosbot fork for the among us empire server has this enabled because it runs a webserver, but it's useless in this repo so you might as well as leave it disabled
+if (client.config.server_enabled == true) {
+    app.listen(port, () => {
+        console.log(`server listening at localhost:${port}`)
+    })
+}
 
 client.login(client.config.token)
