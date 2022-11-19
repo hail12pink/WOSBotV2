@@ -14,7 +14,7 @@ async function searchPart(part, parts, cur, amnt) {
 	cur = cur || {}
 	amnt = amnt || 1
 
-	for (const [i, item] of Object.entries(part.Recipe) {
+	for (const [i, item] of Object.entries(part.Recipe)) {
 		const entry = parts[item[0]]
 
 		if (entry) {
