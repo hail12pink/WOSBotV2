@@ -26,6 +26,7 @@ async function searchPart(part, parts, cur, amnt) {
 		}
 	}
 	
+	console.log("cur:")
 	console.log(cur)
 	return cur
 }
