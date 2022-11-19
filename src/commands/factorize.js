@@ -89,7 +89,7 @@ module.exports = {
 					if (part.Recipe) {
 						finishedString += `${itemName} Assembler x${itemAmount}`
 					} else {
-						finishedString += `${itemName} MiningLaser x${itemAmount}`
+						finishedString += `${itemName} MiningLaser x${itemAmount / 2}`
 					}
 				}
 
