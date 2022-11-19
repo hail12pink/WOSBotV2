@@ -87,13 +87,13 @@ module.exports = {
 					let part = parts[itemName]
 					
 					if (part.Recipe) {
-						assemblerString += `\n${itemName} x${itemAmount}`
+						assemblerString += `\n**${itemName}** x${itemAmount}`
 					} else {
-						miningString += `\n${itemName} x${itemAmount / 2}`
+						miningString += `\n**${itemName}** x${itemAmount / 2}`
 					}
 				}
 
-				embed.setDescription(`__Mining Lasers__\n${miningString}\n\n__Assemblers__\n${assemblerString}`)
+				embed.setDescription(`**__Mining Lasers__**\n${miningString}**\n\n__Assemblers__\n**${assemblerString}`)
 			} else {
 				embed.setDescription(`${partName} MiningLaser x${amount}`)
 			}
