@@ -21,7 +21,7 @@ async function searchPart(part, parts, amnt, cur) {
 			cur[item[0]] = (cur[item[0]] || 0) + amnt * item[1]
 			
 			if (entry.Recipe) {
-				cur = await searchPart(entry, parts, amnt * item[1])
+				cur = await searchPart(entry, parts, amnt * item[1], cur)
 			}
 		}
 	}
