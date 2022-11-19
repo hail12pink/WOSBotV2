@@ -10,7 +10,7 @@ function rgbToHex(rgb) { // https://stackoverflow.com/questions/5623838/rgb-to-h
 	return "#" + componentToHex(rgb[0]) + componentToHex(rgb[1]) + componentToHex(rgb[2]);
 }
 
-async function searchPart(part, parts, cur, amnt) {
+async function searchPart(part, parts, amnt, cur) {
 	cur = cur || {}
 	amnt = amnt || 1
 
