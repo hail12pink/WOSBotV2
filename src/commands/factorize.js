@@ -80,9 +80,9 @@ module.exports = {
 				let requiredMachinery = await searchPart(part, parts, amount)
 				console.log(requiredMachinery)
 				let assemblerString = ""
-				let assemblerCount = 0
+				let assemblerCost = 0
 				let miningString = ""
-				let miningCount = 0
+				let miningCost = 0
 
 				for (const [itemName, itemAmount] of Object.entries(requiredMachinery)) {
 					console.log(itemName)
@@ -90,10 +90,10 @@ module.exports = {
 					
 					if (part.Recipe) {
 						assemblerString += `\n**${itemName}** x${itemAmount}`
-						assemblerCount += 1
+						assemblerCount += itemAmount
 					} else {
 						miningString += `\n**${itemName}** x${itemAmount / 2}`
-						miningCount += 1
+						miningCount += itemAmount
 					}
 				}
 
