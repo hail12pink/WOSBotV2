@@ -78,6 +78,7 @@ module.exports = {
 			
 			if (part.Recipe) {
 				let requiredMachinery = searchPart(part, parts, amount)
+				console.log(requiredMachinery)
 
 				let finishedString = ""
 				for (const [itemName, itemAmount] of Object.entries(requiredMachinery)) {
