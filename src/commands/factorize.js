@@ -26,7 +26,8 @@ async function searchPart(part, parts, cur, amnt) {
 		}
 	}
 	
-	console.log(cur) return cur
+	console.log(cur)
+	return cur
 }
 
 module.exports = {
