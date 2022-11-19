@@ -80,7 +80,7 @@ module.exports = {
 
 				let finishedString = ""
 				for (const [itemName, itemAmount] of Object.entries(requiredMachinery)) {
-					console.log(itemName, itemAmount)
+					console.log(itemName)
 					let part = parts[itemName]
 					finishedString += "\n"
 					
