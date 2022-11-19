@@ -80,8 +80,10 @@ module.exports = {
 				let requiredMachinery = await searchPart(part, parts, amount)
 				console.log(requiredMachinery)
 				let assemblerString = ""
+				let assemblerCount = 0
 				let assemblerCost = 0
 				let miningString = ""
+				let miningCount = 0
 				let miningCost = 0
 
 				for (const [itemName, itemAmount] of Object.entries(requiredMachinery)) {
@@ -91,13 +93,15 @@ module.exports = {
 					if (part.Recipe) {
 						assemblerString += `\n**${itemName}** x${itemAmount}`
 						assemblerCost += itemAmount
+						assemblerCount += 1
 					} else {
 						miningString += `\n**${itemName}** x${itemAmount / 2}`
 						miningCost += itemAmount
+						miningCount += 1 / 2
 					}
 				}
 
-				embed.setDescription(`**__Mining Lasers__**\n${miningString}**\n\n__Assemblers__\n**${assemblerString}\n\nPower Cost: ${(25 * miningCost) + (12 * assemblerCost)}/s`)
+				embed.setDescription(`**__Mining Lasers__**\n${miningString}**\n\n__Assemblers__\n**${assemblerString}\n\nMiningLaser Total: ${miningCount}\nAssembler Total: ${assemblerCount}\nPower Cost: ${(25 * miningCost) + (12 * assemblerCost)}/s`)
 			} else {
 				embed.setDescription(`${partName} MiningLaser x${amount}`)
 			}
