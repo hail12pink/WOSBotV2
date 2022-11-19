@@ -77,7 +77,7 @@ module.exports = {
 			})
 			
 			if (part.Recipe) {
-				let requiredMachinery = searchPart(part, parts, amount)
+				let requiredMachinery = await searchPart(part, parts, amount)
 				console.log(requiredMachinery)
 
 				let finishedString = ""
