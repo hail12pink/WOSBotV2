@@ -79,21 +79,21 @@ module.exports = {
 			if (part.Recipe) {
 				let requiredMachinery = await searchPart(part, parts, amount)
 				console.log(requiredMachinery)
+				let assemblerString = ""
+				let miningString = ""
 
-				let finishedString = ""
 				for (const [itemName, itemAmount] of Object.entries(requiredMachinery)) {
 					console.log(itemName)
 					let part = parts[itemName]
-					finishedString += "\n"
 					
 					if (part.Recipe) {
-						finishedString += `${itemName} Assembler x${itemAmount}`
+						assemblerString += `\n${itemName} x${itemAmount}`
 					} else {
-						finishedString += `${itemName} MiningLaser x${itemAmount / 2}`
+						miningString += `\n${itemName} x${itemAmount / 2}`
 					}
 				}
 
-				embed.setDescription(finishedString)
+				embed.setDescription(`__Mining Lasers__\n${miningString}\n\n__Assemblers__\n${assemblerString}`)
 			} else {
 				embed.setDescription(`${partName} MiningLaser x${amount}`)
 			}
