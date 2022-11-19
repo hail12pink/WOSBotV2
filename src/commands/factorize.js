@@ -88,9 +88,7 @@ module.exports = {
 				} else {
 					finishedString += `${item} MiningLaser x${itemAmount}`
 				}
-					embed.setDescription(finishedString)
-				}
-
+				embed.setDescription(finishedString)
 			} else {
 				embed.setDescription(`${partName} MiningLaser x${amount}`)
 			}
