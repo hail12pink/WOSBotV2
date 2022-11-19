@@ -82,12 +82,14 @@ module.exports = {
 				for (const [itemName, itemAmount] of Object.entries(requiredMachinery)) {
 					let part = parts[itemName]
 					finishedString += "\n"
+					
+					if (part.Recipe) {
+						finishedString += `${itemName} Assembler x${itemAmount}`
+					} else {
+						finishedString += `${itemName} MiningLaser x${itemAmount}`
+					}
 				}
-				if (part.Recipe) {
-					finishedString += `${itemName} Assembler x${itemAmount}`
-				} else {
-					finishedString += `${itemName} MiningLaser x${itemAmount}`
-				}
+
 				embed.setDescription(finishedString)
 			} else {
 				embed.setDescription(`${partName} MiningLaser x${amount}`)
