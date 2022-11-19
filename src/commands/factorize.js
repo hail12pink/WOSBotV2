@@ -84,9 +84,9 @@ module.exports = {
 					finishedString += "\n"
 				}
 				if (part.Recipe) {
-					finishedString += `${item} Assembler x${itemAmount}`
+					finishedString += `${itemName} Assembler x${itemAmount}`
 				} else {
-					finishedString += `${item} MiningLaser x${itemAmount}`
+					finishedString += `${itemName} MiningLaser x${itemAmount}`
 				}
 				embed.setDescription(finishedString)
 			} else {
