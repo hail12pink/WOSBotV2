@@ -97,7 +97,7 @@ module.exports = {
 					}
 				}
 
-				embed.setDescription(`**__Mining Lasers__**\n${miningString}**\n\n__Assemblers__\n**${assemblerString}\n\nPower Cost: ${(25 * miningCount) + (12 * assemblerCount}`)
+				embed.setDescription(`**__Mining Lasers__**\n${miningString}**\n\n__Assemblers__\n**${assemblerString}\n\nPower Cost: ${(25 * miningCount) + (12 * assemblerCount)}`)
 			} else {
 				embed.setDescription(`${partName} MiningLaser x${amount}`)
 			}
