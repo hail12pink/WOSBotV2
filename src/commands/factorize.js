@@ -90,10 +90,10 @@ module.exports = {
 					
 					if (part.Recipe) {
 						assemblerString += `\n**${itemName}** x${itemAmount}`
-						assemblerCount += itemAmount
+						assemblerCost += itemAmount
 					} else {
 						miningString += `\n**${itemName}** x${itemAmount / 2}`
-						miningCount += itemAmount
+						miningCost += itemAmount
 					}
 				}
 
