@@ -46,7 +46,7 @@ module.exports = {
 	{
 		name: "amount",
 		description: "The amount of desired parts to be made per second.",
-		type: 4,
+		type: 10,
 		required: false
 	}],
 
@@ -54,7 +54,7 @@ module.exports = {
 		const user = interaction.user
 		const parts = await (await fetch("http://12pink.dev/data/parts.json")).json()
 		let partName = interaction.options.getString("part")
-		let amount = interaction.options.getString("amount") || 1
+		let amount = interaction.options.getNumber("amount") || 1
 		let part = null
 
 		for (const [partN, partI] of Object.entries(parts)) {
